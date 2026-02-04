@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #080808;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.clock-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ring Logic */
+.ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+.ring span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: #222; /* Dimmed inactive text */
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+}
+
+/* Radii for different rings */
+#month-ring span { height: 260px; }
+#day-ring span { height: 210px; }
+#date-ring span { height: 160px; }
+
+/* Active Glow State */
+.ring span.active {
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Center Dial */
+.center-dial {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #151515 0%, #000 100%);
+    border-radius: 50%;
+    position: relative;
+    border: 2px solid #222;
+    z-index: 10;
+}
+
+/* Digital Display Style */
+.digital-time {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff3b3b;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 59, 59, 0.4);
+}
+
+/* Analog Hands */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 5px;
+    transform: translateX(-50%);
+}
+
+.hour { width: 6px; height: 40px; background: #eee; z-index: 3; }
+.minute { width: 4px; height: 60px; background: #999; z-index: 2; }
+.second { width: 2px; height: 70px; background: #ff3b3b; z-index: 1; }
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: #ff3b3b;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
